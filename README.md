@@ -4,23 +4,25 @@
 Данный репозиторий содержит инструкции , а также готовые deb пакеты для установки</p> 
 
 <h2>Для самостоятельной сборки</h2>
-<p>Качаем исходники со страницы https://launchpad.net/ubuntu/+source/debhelper/10.2.2ubuntu1~ubuntu16.04.1
-и https://launchpad.net/ubuntu/+source/dh-autoreconf/12~ubuntu16.04.1
+<p>Качаем исходники со страницы https://launchpad.net/ubuntu/+source/debhelper/12.10ubuntu1
+и https://launchpad.net/ubuntu/+source/dh-autoreconf/17
 
 Распаковываем архивы 
-tar -xpf ./debhelper_10.2.2ubuntu1~ubuntu16.04.1.tar.xz
-tar -xpf ./dh-autoreconf_12~ubuntu16.04.1.tar.xz
+tar -xpf ./debhelper_12.10ubuntu1.tar.xz
+tar -xpf ./dh-autoreconf_17.tar.xz
 
-Ставим зависимости
-po4a autoconf automake autopoint
+Накладываем заплатки
+patch -p1 < ppc_debhelper-12.10ubuntu1.patch
+patch -p1 < ppc_dh-autoreconf-17.patch
 
 и запускаем сборку
-cd debhelper-xenial && debuild -us -uc
-cd dh-autoreconf-xenial && debuild -us -uc</p> 
+cd debhelper-12.10ubuntu1 && debuild -us -uc
+cd dh-autoreconf-17 && debuild -us -uc</p> 
 
 
 
 <h2>ДЛя установки готовых пакетов</h2>
-<p>dpkg -i /path/dh-systemd_10.2.2ubuntu1~ubuntu16.04.1_all.deb
-dpkg -i /path/dh-autoreconf_12~ubuntu16.04.1_all.deb
-dpkg -i /path/debhelper_10.2.2ubuntu1~ubuntu16.04.1_all.deb</p>
+<p>dpkg -i /path/dh-systemd_12.10ubuntu1_all.deb
+dpkg -i /path/dh-autoreconf_17_all.deb
+dpkg -i /path/libdebhelper-perl_12.10ubuntu1_all.deb
+dpkg -i /path/debhelper_12.10ubuntu1_all.deb</p>
